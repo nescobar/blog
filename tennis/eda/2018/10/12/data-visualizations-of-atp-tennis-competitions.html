@@ -3,19 +3,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Analysis of ATP Tennis competitions from 1968 to 2019 | dataguasu</title>
+<title>Analysis of ATP Tennis competitions | dataguasu</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Analysis of ATP Tennis competitions from 1968 to 2019" />
+<meta property="og:title" content="Analysis of ATP Tennis competitions" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This project seeks to analyze data from men’s ATP tennis competitions from the year 1968 up to 2019, including Grand Slams, Masters Series, Masters Cup and International Series competitions" />
-<meta property="og:description" content="This project seeks to analyze data from men’s ATP tennis competitions from the year 1968 up to 2019, including Grand Slams, Masters Series, Masters Cup and International Series competitions" />
+<meta name="description" content="In this notebook, I analyze data from men’s ATP tennis competitions from the year 1968 up to 2019." />
+<meta property="og:description" content="In this notebook, I analyze data from men’s ATP tennis competitions from the year 1968 up to 2019." />
 <link rel="canonical" href="https://www.dataguasu.com/blog/tennis/eda/2018/10/12/data-visualizations-of-atp-tennis-competitions.html" />
 <meta property="og:url" content="https://www.dataguasu.com/blog/tennis/eda/2018/10/12/data-visualizations-of-atp-tennis-competitions.html" />
 <meta property="og:site_name" content="dataguasu" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-10-12T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"This project seeks to analyze data from men’s ATP tennis competitions from the year 1968 up to 2019, including Grand Slams, Masters Series, Masters Cup and International Series competitions","@type":"BlogPosting","headline":"Analysis of ATP Tennis competitions from 1968 to 2019","dateModified":"2018-10-12T00:00:00-05:00","url":"https://www.dataguasu.com/blog/tennis/eda/2018/10/12/data-visualizations-of-atp-tennis-competitions.html","datePublished":"2018-10-12T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.dataguasu.com/blog/tennis/eda/2018/10/12/data-visualizations-of-atp-tennis-competitions.html"},"@context":"https://schema.org"}</script>
+{"description":"In this notebook, I analyze data from men’s ATP tennis competitions from the year 1968 up to 2019.","@type":"BlogPosting","headline":"Analysis of ATP Tennis competitions","dateModified":"2018-10-12T00:00:00-05:00","url":"https://www.dataguasu.com/blog/tennis/eda/2018/10/12/data-visualizations-of-atp-tennis-competitions.html","datePublished":"2018-10-12T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.dataguasu.com/blog/tennis/eda/2018/10/12/data-visualizations-of-atp-tennis-competitions.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -90,7 +90,7 @@
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Analysis of ATP Tennis competitions from 1968 to 2019</h1><p class="page-description">This project seeks to analyze data from men’s ATP tennis competitions from the year 1968 up to 2019, including Grand Slams, Masters Series, Masters Cup and International Series competitions</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-10-12T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Analysis of ATP Tennis competitions</h1><p class="page-description">In this notebook, I analyze data from men’s ATP tennis competitions from the year 1968 up to 2019.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-10-12T00:00:00-05:00" itemprop="datePublished">
         Oct 12, 2018
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -129,29 +129,29 @@
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#Data-loading,-transforming-and-initial-exploration">Data loading, transforming and initial exploration¶</a></li>
-<li class="toc-entry toc-h2"><a href="#Distribution-of-aces-by-surface-type">Distribution of aces by surface type¶</a></li>
-<li class="toc-entry toc-h2"><a href="#Evolution-of-top-countries-represented-by-their-players">Evolution of top countries represented by their players¶</a></li>
-<li class="toc-entry toc-h2"><a href="#Top-most-aces,-double-faults-and-break-points-saved">Top most aces, double faults and break points saved¶</a></li>
-<li class="toc-entry toc-h2"><a href="#Evolution-of-top-players-in-the-last-20-years">Evolution of top players in the last 20 years¶</a></li>
-<li class="toc-entry toc-h2"><a href="#Dominance:-Unique-number-of-players-that-won-most-important-tournaments">Dominance: Unique number of players that won most important tournaments¶</a></li>
-<li class="toc-entry toc-h2"><a href="#Relationship-between-Aces-and-Height-of-players">Relationship between Aces and Height of players¶</a></li>
-<li class="toc-entry toc-h2"><a href="#Effectiveness-of-top-players-by-surface-type">Effectiveness of top players by surface type¶</a></li>
-<li class="toc-entry toc-h1"><a href="#Analysis-from-1968-to-2019">Analysis from 1968 to 2019¶</a>
+<li class="toc-entry toc-h2"><a href="#Data-loading,-transforming-and-initial-exploration">Data loading, transforming and initial exploration </a></li>
+<li class="toc-entry toc-h2"><a href="#Distribution-of-aces-by-surface-type">Distribution of aces by surface type </a></li>
+<li class="toc-entry toc-h2"><a href="#Evolution-of-top-countries-represented-by-their-players">Evolution of top countries represented by their players </a></li>
+<li class="toc-entry toc-h2"><a href="#Top-most-aces,-double-faults-and-break-points-saved">Top most aces, double faults and break points saved </a></li>
+<li class="toc-entry toc-h2"><a href="#Evolution-of-top-players-in-the-last-20-years">Evolution of top players in the last 20 years </a></li>
+<li class="toc-entry toc-h2"><a href="#Dominance:-Unique-number-of-players-that-won-most-important-tournaments">Dominance: Unique number of players that won most important tournaments </a></li>
+<li class="toc-entry toc-h2"><a href="#Relationship-between-Aces-and-Height-of-players">Relationship between Aces and Height of players </a></li>
+<li class="toc-entry toc-h2"><a href="#Effectiveness-of-top-players-by-surface-type">Effectiveness of top players by surface type </a></li>
+<li class="toc-entry toc-h1"><a href="#Analysis-from-1968-to-2019">Analysis from 1968 to 2019 </a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#Retirements">Retirements¶</a>
+<li class="toc-entry toc-h2"><a href="#Retirements">Retirements </a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#-Do-the-retirements-by-tournament-type-have-the-same-behaviour?-"> Do the retirements by tournament type have the same behaviour? ¶</a></li>
-<li class="toc-entry toc-h3"><a href="#-Is-is-just-that-we-have-more-retirements-because-there-are-more-matches-played-in-that-tournament-or-surface?-What-if-we-consider-the-ratio-of-retirements-over-matches-played?-"> Is is just that we have more retirements because there are more matches played in that tournament or surface? What if we consider the ratio of retirements over matches played? ¶</a></li>
-<li class="toc-entry toc-h3"><a href="#-We-can-see-there-is-a-growth-in-retirements-over-the-years.-The-growth-seems-to-happen-across-surfaces.-Does-it-also-happen-across-tournament-types?-"> We can see there is a growth in retirements over the years. The growth seems to happen across surfaces. Does it also happen across tournament types? ¶</a></li>
-<li class="toc-entry toc-h3"><a href="#-If-we-look-at-countries-with-the-most-matches-in-the-ATP,-which-ones-are-the-ones-with-the-highest-retirements'-ratio?-"> If we look at countries with the most matches in the ATP, which ones are the ones with the highest retirements&#39; ratio? ¶</a></li>
-<li class="toc-entry toc-h3"><a href="#-Who-are-the-players-that-retired-the-most?-Not-looking-at-ratios-here,-just-the-total-number-of-retirements-"> Who are the players that retired the most? Not looking at ratios here, just the total number of retirements ¶</a></li>
-<li class="toc-entry toc-h3"><a href="#-What-about-the-players-that-played-the-most-matches-and-never-retired-from-a-match?-What-was-their-winning-ratio?-"> What about the players that played the most matches and never retired from a match? What was their winning ratio? ¶</a></li>
-<li class="toc-entry toc-h3"><a href="#-All-these-players-are-from-different-time-periods.-Let's-see,-how-many-of-the-top-10-were-actually-playing-together.-"> All these players are from different time periods. Let&#39;s see, how many of the top 10 were actually playing together. ¶</a></li>
+<li class="toc-entry toc-h3"><a href="#-Do-the-retirements-by-tournament-type-have-the-same-behaviour?-"> Do the retirements by tournament type have the same behaviour?  </a></li>
+<li class="toc-entry toc-h3"><a href="#-Is-is-just-that-we-have-more-retirements-because-there-are-more-matches-played-in-that-tournament-or-surface?-What-if-we-consider-the-ratio-of-retirements-over-matches-played?-"> Is is just that we have more retirements because there are more matches played in that tournament or surface? What if we consider the ratio of retirements over matches played?  </a></li>
+<li class="toc-entry toc-h3"><a href="#-We-can-see-there-is-a-growth-in-retirements-over-the-years.-The-growth-seems-to-happen-across-surfaces.-Does-it-also-happen-across-tournament-types?-"> We can see there is a growth in retirements over the years. The growth seems to happen across surfaces. Does it also happen across tournament types?  </a></li>
+<li class="toc-entry toc-h3"><a href="#-If-we-look-at-countries-with-the-most-matches-in-the-ATP,-which-ones-are-the-ones-with-the-highest-retirements'-ratio?-"> If we look at countries with the most matches in the ATP, which ones are the ones with the highest retirements&#39; ratio?  </a></li>
+<li class="toc-entry toc-h3"><a href="#-Who-are-the-players-that-retired-the-most?-Not-looking-at-ratios-here,-just-the-total-number-of-retirements-"> Who are the players that retired the most? Not looking at ratios here, just the total number of retirements  </a></li>
+<li class="toc-entry toc-h3"><a href="#-What-about-the-players-that-played-the-most-matches-and-never-retired-from-a-match?-What-was-their-winning-ratio?-"> What about the players that played the most matches and never retired from a match? What was their winning ratio?  </a></li>
+<li class="toc-entry toc-h3"><a href="#-All-these-players-are-from-different-time-periods.-Let's-see,-how-many-of-the-top-10-were-actually-playing-together.-"> All these players are from different time periods. Let&#39;s see, how many of the top 10 were actually playing together.  </a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#Longest-career-spans">Longest career spans¶</a></li>
-<li class="toc-entry toc-h2"><a href="#Head-to-Head">Head to Head¶</a></li>
+<li class="toc-entry toc-h2"><a href="#Longest-career-spans">Longest career spans </a></li>
+<li class="toc-entry toc-h2"><a href="#Head-to-Head">Head to Head </a></li>
 </ul>
 </li>
 </ul><!--
@@ -211,7 +211,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Data-loading,-transforming-and-initial-exploration">
-<a class="anchor" href="#Data-loading,-transforming-and-initial-exploration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data loading, transforming and initial exploration<a class="anchor-link" href="#Data-loading,-transforming-and-initial-exploration">¶</a>
+<a class="anchor" href="#Data-loading,-transforming-and-initial-exploration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data loading, transforming and initial exploration<a class="anchor-link" href="#Data-loading,-transforming-and-initial-exploration"> </a>
 </h2>
 <p><img src="http://" alt="">We start off with basic data exploration using pairplots and histograms to better understand the distribution of the key variables of our dataset based on multiple dimensions. Data conversion is also done to convert string values to float for a few columns that contain numerical values.</p>
 
@@ -364,7 +364,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Distribution-of-aces-by-surface-type">
-<a class="anchor" href="#Distribution-of-aces-by-surface-type" aria-hidden="true"><span class="octicon octicon-link"></span></a>Distribution of aces by surface type<a class="anchor-link" href="#Distribution-of-aces-by-surface-type">¶</a>
+<a class="anchor" href="#Distribution-of-aces-by-surface-type" aria-hidden="true"><span class="octicon octicon-link"></span></a>Distribution of aces by surface type<a class="anchor-link" href="#Distribution-of-aces-by-surface-type"> </a>
 </h2>
 <p>What is the distribution of aces by the different type of surfaces?</p>
 
@@ -429,7 +429,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Evolution-of-top-countries-represented-by-their-players">
-<a class="anchor" href="#Evolution-of-top-countries-represented-by-their-players" aria-hidden="true"><span class="octicon octicon-link"></span></a>Evolution of top countries represented by their players<a class="anchor-link" href="#Evolution-of-top-countries-represented-by-their-players">¶</a>
+<a class="anchor" href="#Evolution-of-top-countries-represented-by-their-players" aria-hidden="true"><span class="octicon octicon-link"></span></a>Evolution of top countries represented by their players<a class="anchor-link" href="#Evolution-of-top-countries-represented-by-their-players"> </a>
 </h2>
 </div>
 </div>
@@ -512,7 +512,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Top-most-aces,-double-faults-and-break-points-saved">
-<a class="anchor" href="#Top-most-aces,-double-faults-and-break-points-saved" aria-hidden="true"><span class="octicon octicon-link"></span></a>Top most aces, double faults and break points saved<a class="anchor-link" href="#Top-most-aces,-double-faults-and-break-points-saved">¶</a>
+<a class="anchor" href="#Top-most-aces,-double-faults-and-break-points-saved" aria-hidden="true"><span class="octicon octicon-link"></span></a>Top most aces, double faults and break points saved<a class="anchor-link" href="#Top-most-aces,-double-faults-and-break-points-saved"> </a>
 </h2>
 </div>
 </div>
@@ -677,7 +677,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Evolution-of-top-players-in-the-last-20-years">
-<a class="anchor" href="#Evolution-of-top-players-in-the-last-20-years" aria-hidden="true"><span class="octicon octicon-link"></span></a>Evolution of top players in the last 20 years<a class="anchor-link" href="#Evolution-of-top-players-in-the-last-20-years">¶</a>
+<a class="anchor" href="#Evolution-of-top-players-in-the-last-20-years" aria-hidden="true"><span class="octicon octicon-link"></span></a>Evolution of top players in the last 20 years<a class="anchor-link" href="#Evolution-of-top-players-in-the-last-20-years"> </a>
 </h2>
 </div>
 </div>
@@ -864,7 +864,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Dominance:-Unique-number-of-players-that-won-most-important-tournaments">
-<a class="anchor" href="#Dominance:-Unique-number-of-players-that-won-most-important-tournaments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dominance: Unique number of players that won most important tournaments<a class="anchor-link" href="#Dominance:-Unique-number-of-players-that-won-most-important-tournaments">¶</a>
+<a class="anchor" href="#Dominance:-Unique-number-of-players-that-won-most-important-tournaments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dominance: Unique number of players that won most important tournaments<a class="anchor-link" href="#Dominance:-Unique-number-of-players-that-won-most-important-tournaments"> </a>
 </h2>
 </div>
 </div>
@@ -985,7 +985,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Relationship-between-Aces-and-Height-of-players">
-<a class="anchor" href="#Relationship-between-Aces-and-Height-of-players" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationship between Aces and Height of players<a class="anchor-link" href="#Relationship-between-Aces-and-Height-of-players">¶</a>
+<a class="anchor" href="#Relationship-between-Aces-and-Height-of-players" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationship between Aces and Height of players<a class="anchor-link" href="#Relationship-between-Aces-and-Height-of-players"> </a>
 </h2>
 </div>
 </div>
@@ -1062,7 +1062,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Effectiveness-of-top-players-by-surface-type">
-<a class="anchor" href="#Effectiveness-of-top-players-by-surface-type" aria-hidden="true"><span class="octicon octicon-link"></span></a>Effectiveness of top players by surface type<a class="anchor-link" href="#Effectiveness-of-top-players-by-surface-type">¶</a>
+<a class="anchor" href="#Effectiveness-of-top-players-by-surface-type" aria-hidden="true"><span class="octicon octicon-link"></span></a>Effectiveness of top players by surface type<a class="anchor-link" href="#Effectiveness-of-top-players-by-surface-type"> </a>
 </h2>
 </div>
 </div>
@@ -1330,7 +1330,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Analysis-from-1968-to-2019">
-<a class="anchor" href="#Analysis-from-1968-to-2019" aria-hidden="true"><span class="octicon octicon-link"></span></a>Analysis from 1968 to 2019<a class="anchor-link" href="#Analysis-from-1968-to-2019">¶</a>
+<a class="anchor" href="#Analysis-from-1968-to-2019" aria-hidden="true"><span class="octicon octicon-link"></span></a>Analysis from 1968 to 2019<a class="anchor-link" href="#Analysis-from-1968-to-2019"> </a>
 </h1>
 </div>
 </div>
@@ -1416,7 +1416,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Retirements">
-<a class="anchor" href="#Retirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Retirements<a class="anchor-link" href="#Retirements">¶</a>
+<a class="anchor" href="#Retirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Retirements<a class="anchor-link" href="#Retirements"> </a>
 </h2>
 <p><strong> What is the evolution of retirements over time? In which tournament we see most of these retirements? </strong></p>
 
@@ -1504,7 +1504,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="-Do-the-retirements-by-tournament-type-have-the-same-behaviour?-">
-<a class="anchor" href="#-Do-the-retirements-by-tournament-type-have-the-same-behaviour?-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> Do the retirements by tournament type have the same behaviour? </strong><a class="anchor-link" href="#-Do-the-retirements-by-tournament-type-have-the-same-behaviour?-">¶</a>
+<a class="anchor" href="#-Do-the-retirements-by-tournament-type-have-the-same-behaviour?-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> Do the retirements by tournament type have the same behaviour? </strong><a class="anchor-link" href="#-Do-the-retirements-by-tournament-type-have-the-same-behaviour?-"> </a>
 </h3>
 </div>
 </div>
@@ -1583,7 +1583,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="-Is-is-just-that-we-have-more-retirements-because-there-are-more-matches-played-in-that-tournament-or-surface?-What-if-we-consider-the-ratio-of-retirements-over-matches-played?-">
-<a class="anchor" href="#-Is-is-just-that-we-have-more-retirements-because-there-are-more-matches-played-in-that-tournament-or-surface?-What-if-we-consider-the-ratio-of-retirements-over-matches-played?-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> Is is just that we have more retirements because there are more matches played in that tournament or surface? What if we consider the ratio of retirements over matches played? </strong><a class="anchor-link" href="#-Is-is-just-that-we-have-more-retirements-because-there-are-more-matches-played-in-that-tournament-or-surface?-What-if-we-consider-the-ratio-of-retirements-over-matches-played?-">¶</a>
+<a class="anchor" href="#-Is-is-just-that-we-have-more-retirements-because-there-are-more-matches-played-in-that-tournament-or-surface?-What-if-we-consider-the-ratio-of-retirements-over-matches-played?-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> Is is just that we have more retirements because there are more matches played in that tournament or surface? What if we consider the ratio of retirements over matches played? </strong><a class="anchor-link" href="#-Is-is-just-that-we-have-more-retirements-because-there-are-more-matches-played-in-that-tournament-or-surface?-What-if-we-consider-the-ratio-of-retirements-over-matches-played?-"> </a>
 </h3>
 </div>
 </div>
@@ -1676,7 +1676,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="-We-can-see-there-is-a-growth-in-retirements-over-the-years.-The-growth-seems-to-happen-across-surfaces.-Does-it-also-happen-across-tournament-types?-">
-<a class="anchor" href="#-We-can-see-there-is-a-growth-in-retirements-over-the-years.-The-growth-seems-to-happen-across-surfaces.-Does-it-also-happen-across-tournament-types?-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> We can see there is a growth in retirements over the years. The growth seems to happen across surfaces. Does it also happen across tournament types? </strong><a class="anchor-link" href="#-We-can-see-there-is-a-growth-in-retirements-over-the-years.-The-growth-seems-to-happen-across-surfaces.-Does-it-also-happen-across-tournament-types?-">¶</a>
+<a class="anchor" href="#-We-can-see-there-is-a-growth-in-retirements-over-the-years.-The-growth-seems-to-happen-across-surfaces.-Does-it-also-happen-across-tournament-types?-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> We can see there is a growth in retirements over the years. The growth seems to happen across surfaces. Does it also happen across tournament types? </strong><a class="anchor-link" href="#-We-can-see-there-is-a-growth-in-retirements-over-the-years.-The-growth-seems-to-happen-across-surfaces.-Does-it-also-happen-across-tournament-types?-"> </a>
 </h3>
 </div>
 </div>
@@ -1852,7 +1852,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="-If-we-look-at-countries-with-the-most-matches-in-the-ATP,-which-ones-are-the-ones-with-the-highest-retirements'-ratio?-">
-<a class="anchor" href="#-If-we-look-at-countries-with-the-most-matches-in-the-ATP,-which-ones-are-the-ones-with-the-highest-retirements'-ratio?-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> If we look at countries with the most matches in the ATP, which ones are the ones with the highest retirements' ratio? </strong><a class="anchor-link" href="#-If-we-look-at-countries-with-the-most-matches-in-the-ATP,-which-ones-are-the-ones-with-the-highest-retirements'-ratio?-">¶</a>
+<a class="anchor" href="#-If-we-look-at-countries-with-the-most-matches-in-the-ATP,-which-ones-are-the-ones-with-the-highest-retirements'-ratio?-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> If we look at countries with the most matches in the ATP, which ones are the ones with the highest retirements' ratio? </strong><a class="anchor-link" href="#-If-we-look-at-countries-with-the-most-matches-in-the-ATP,-which-ones-are-the-ones-with-the-highest-retirements'-ratio?-"> </a>
 </h3>
 </div>
 </div>
@@ -1918,7 +1918,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="-Who-are-the-players-that-retired-the-most?-Not-looking-at-ratios-here,-just-the-total-number-of-retirements-">
-<a class="anchor" href="#-Who-are-the-players-that-retired-the-most?-Not-looking-at-ratios-here,-just-the-total-number-of-retirements-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> Who are the players that retired the most? Not looking at ratios here, just the total number of retirements </strong><a class="anchor-link" href="#-Who-are-the-players-that-retired-the-most?-Not-looking-at-ratios-here,-just-the-total-number-of-retirements-">¶</a>
+<a class="anchor" href="#-Who-are-the-players-that-retired-the-most?-Not-looking-at-ratios-here,-just-the-total-number-of-retirements-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> Who are the players that retired the most? Not looking at ratios here, just the total number of retirements </strong><a class="anchor-link" href="#-Who-are-the-players-that-retired-the-most?-Not-looking-at-ratios-here,-just-the-total-number-of-retirements-"> </a>
 </h3>
 </div>
 </div>
@@ -1975,7 +1975,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="-What-about-the-players-that-played-the-most-matches-and-never-retired-from-a-match?-What-was-their-winning-ratio?-">
-<a class="anchor" href="#-What-about-the-players-that-played-the-most-matches-and-never-retired-from-a-match?-What-was-their-winning-ratio?-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> What about the players that played the most matches and never retired from a match? What was their winning ratio? </strong><a class="anchor-link" href="#-What-about-the-players-that-played-the-most-matches-and-never-retired-from-a-match?-What-was-their-winning-ratio?-">¶</a>
+<a class="anchor" href="#-What-about-the-players-that-played-the-most-matches-and-never-retired-from-a-match?-What-was-their-winning-ratio?-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> What about the players that played the most matches and never retired from a match? What was their winning ratio? </strong><a class="anchor-link" href="#-What-about-the-players-that-played-the-most-matches-and-never-retired-from-a-match?-What-was-their-winning-ratio?-"> </a>
 </h3>
 </div>
 </div>
@@ -2058,7 +2058,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="-All-these-players-are-from-different-time-periods.-Let's-see,-how-many-of-the-top-10-were-actually-playing-together.-">
-<a class="anchor" href="#-All-these-players-are-from-different-time-periods.-Let's-see,-how-many-of-the-top-10-were-actually-playing-together.-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> All these players are from different time periods. Let's see, how many of the top 10 were actually playing together. </strong><a class="anchor-link" href="#-All-these-players-are-from-different-time-periods.-Let's-see,-how-many-of-the-top-10-were-actually-playing-together.-">¶</a>
+<a class="anchor" href="#-All-these-players-are-from-different-time-periods.-Let's-see,-how-many-of-the-top-10-were-actually-playing-together.-" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong> All these players are from different time periods. Let's see, how many of the top 10 were actually playing together. </strong><a class="anchor-link" href="#-All-these-players-are-from-different-time-periods.-Let's-see,-how-many-of-the-top-10-were-actually-playing-together.-"> </a>
 </h3>
 </div>
 </div>
@@ -2114,7 +2114,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Longest-career-spans">
-<a class="anchor" href="#Longest-career-spans" aria-hidden="true"><span class="octicon octicon-link"></span></a>Longest career spans<a class="anchor-link" href="#Longest-career-spans">¶</a>
+<a class="anchor" href="#Longest-career-spans" aria-hidden="true"><span class="octicon octicon-link"></span></a>Longest career spans<a class="anchor-link" href="#Longest-career-spans"> </a>
 </h2>
 <p><strong> Which players have had the longest career spans? At what age did they stop playing? </strong></p>
 
@@ -2206,7 +2206,7 @@ The number of taller players with more aces have also increased</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Head-to-Head">
-<a class="anchor" href="#Head-to-Head" aria-hidden="true"><span class="octicon octicon-link"></span></a>Head to Head<a class="anchor-link" href="#Head-to-Head">¶</a>
+<a class="anchor" href="#Head-to-Head" aria-hidden="true"><span class="octicon octicon-link"></span></a>Head to Head<a class="anchor-link" href="#Head-to-Head"> </a>
 </h2>
 <p><strong> Which players played the most head to head matches per time period? </strong></p>
 
