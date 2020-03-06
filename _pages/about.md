@@ -16,8 +16,8 @@ En este blog comparto análisis de temas que me interesan, aprendizajes, experie
 
 Nicolás Escobar. Born in Asunción, Paraguay. Happily married, proud father of two daughters. Passionate about applied data science. [Federista](https://en.wikipedia.org/wiki/Roger_Federer) and [Olimpista](https://en.wikipedia.org/wiki/Club_Olimpia).
 
-I've been working in Copenhagen, Denmark since April 2019, as a senior game analyst at a [gaming company](https://corporate.moviestarplanet.com/). I'm wearing many hats, my role involves developing process to collect data from multiple source, work on exploratory data analysis, build various models (forecasting, campaign impact, customer lifetime value, ..) and dashboards to visualize information.
+I've been working in Copenhagen, Denmark since April 2019, as a senior game analyst at a [gaming company](https://corporate.moviestarplanet.com/). I'm *wearing multiple hats*, my role involves developing processes to collect data from different sources, working on exploratory data analysis, building models (forecasting, campaign impact, customer lifetime value, ..) and dashboards to visualize information.
 
-In this blog I will be sharing analysis of topics I'm interested in, learnings, experiences and personal opinions. My objective is to promote fact based analysis, working with open data or collecting new data from various sources. Most of my posts will be in Spanish use data sources in Spanish. There are already so many data science related posts in English but not as much in Spanish, so I like to create more content to reduce barriers for spanish only speaking people.
+In this blog I will be sharing analysis of topics I'm interested in, learnings, experiences and personal opinions. Most of my posts will be in Spanish. There are already plenty of data science resources in English but not as many in Spanish, so I'd like to create content that help reduce the entry barrier to data science for hispanics.
 
 
