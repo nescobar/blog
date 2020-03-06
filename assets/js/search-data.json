@@ -28,8 +28,8 @@
 
   
       ,"page1": {
-          "title": "About Me",
-          "content": "This is where you put the contents of your About page. Like all your pages, it’s in Markdown format. . This website is powered by fastpages 1. . a blogging platform that natively supports Jupyter notebooks in addition to other formats. &#8617; . |",
+          "title": "Quien Soy | About Me",
+          "content": "Nicolás Escobar. Nacido en Asunción, Paraguay. Felizmente casado, papá orgulloso de dos hijas. Apasionado de la ciencia de datos aplicada. Federista y Olimpista. . Desde Abril, 2019 me encuentro trabajando en Copenhague, Dinamarca como analista senior de datos en una empresa de juegos online. Mi rol actual involucra crear procesos para recolectar datos, realizar análisis exploratorios, construir modelos para diferentes casos de uso (forecasting, impacto de campañas, customer lifetime value, ..) y dashboards para visualizar la información. . En este blog comparto análisis de temas que me interesan, aprendizajes, experiencias y opiniones personales. En mayoría de estos análisis utilizo librerías de Python y a veces, R. .",
           "url": "https://www.dataguasu.com/blog/about/",
           "relUrl": "/about/",
           "date": ""
