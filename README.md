@@ -83,7 +83,7 @@ After review and explicit deployment approval:
 2. Confirm that the **Site quality** workflow passes.
 3. Review and merge the pull request.
 4. In GitHub Actions, manually run **Deploy Data Guasu** from `master`.
-5. Confirm that `SSH_DEPLOY_KEY` still has write access and that Pages still serves the `gh-pages` branch.
+5. Confirm that Pages still serves the `gh-pages` branch.
 6. Verify `https://www.dataguasu.com/`, both language trees, the legacy redirects, and HTTPS after the workflow succeeds.
 
 The root `CNAME` is preserved, and `public/CNAME` ensures the built artifact also contains `www.dataguasu.com`. Do not change DNS while the domain continues to point to GitHub Pages.
