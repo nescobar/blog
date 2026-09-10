@@ -1,0 +1,85 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import ContactBand from "@/components/ContactBand.astro";
+import { pageMeta, site, type Locale } from "@/content/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const content =
+  locale === "es"
+    ? {
+        eyebrow: "Sobre Data Guasu",
+        title: "Una práctica independiente para decisiones que cruzan marketing, datos y finanzas.",
+        lead: "Data Guasu combina experiencia técnica senior con el contexto operativo necesario para convertir medición en decisiones de inversión.",
+        storyTitle: "Modelar es solo una parte del trabajo.",
+        intro:
+          "Nicolás Escobar es senior data scientist y fundador de Data Guasu. Su trabajo se concentra en problemas donde el rigor analítico tiene que convivir con velocidad, restricciones comerciales y datos imperfectos.",
+        paragraphs: [
+          "Durante cerca de siete años aplicó data science en gaming, trabajando con user acquisition, forecasting, LTV, performance de campañas y herramientas para decidir dónde y cuánto invertir. Su experiencia previa incluye telecomunicaciones y otros entornos comerciales.",
+          "Trabaja desde Paraguay con equipos internacionales y distribuidos. En la práctica, esto significa facilitar conversaciones entre marketing, finanzas, analytics e ingeniería, para que los modelos respondan a una misma definición del negocio.",
+          "Cuenta con un Master of Science en Data Science de Indiana University Bloomington. Data Guasu toma esa base técnica y la pone al servicio de sistemas de medición que los equipos puedan usar, revisar y sostener.",
+        ],
+        facts: [
+          { label: "Especialidad", value: "Marketing measurement, forecasting y decision science" },
+          { label: "Experiencia", value: "Gaming, telecomunicaciones y negocios digitales" },
+          { label: "Colaboración", value: "Marketing, finanzas, analytics e ingeniería" },
+          { label: "Formación", value: "M.S. in Data Science, Indiana University Bloomington" },
+          { label: "Base", value: "Paraguay, con trabajo remoto e internacional" },
+        ],
+        profile: "Ver perfil profesional en LinkedIn",
+      }
+    : {
+        eyebrow: "About Data Guasu",
+        title: "An independent practice for decisions spanning marketing, data, and finance.",
+        lead: "Data Guasu combines senior technical experience with the operating context needed to turn measurement into investment decisions.",
+        storyTitle: "Modeling is only part of the work.",
+        intro:
+          "Nicolás Escobar is a senior data scientist and the founder of Data Guasu. His work focuses on problems where analytical rigor has to coexist with speed, commercial constraints, and imperfect data.",
+        paragraphs: [
+          "For about seven years, he has applied data science in gaming, working with user acquisition, forecasting, LTV, campaign performance, and tools that support where and how much to invest. His earlier experience includes telecommunications and other commercial environments.",
+          "He works from Paraguay with international and distributed teams. In practice, this means facilitating conversations across marketing, finance, analytics, and engineering so models reflect a shared definition of the business.",
+          "He holds a Master of Science in Data Science from Indiana University Bloomington. Data Guasu puts that technical foundation to work in measurement systems teams can use, review, and sustain.",
+        ],
+        facts: [
+          { label: "Specialty", value: "Marketing measurement, forecasting, and decision science" },
+          { label: "Experience", value: "Gaming, telecommunications, and digital businesses" },
+          { label: "Collaboration", value: "Marketing, finance, analytics, and engineering" },
+          { label: "Education", value: "M.S. in Data Science, Indiana University Bloomington" },
+          { label: "Based in", value: "Paraguay, working remotely and internationally" },
+        ],
+        profile: "View professional profile on LinkedIn",
+      };
+---
+
+<BaseLayout locale={locale} pageKey="about" {...pageMeta[locale].about}>
+  <PageIntro eyebrow={content.eyebrow} title={content.title} lead={content.lead} />
+  <section class="section">
+    <div class="shell about-story">
+      <h2>{content.storyTitle}</h2>
+      <div class="about-copy">
+        <p>{content.intro}</p>{content.paragraphs.map((paragraph) => <p>{paragraph}</p>)}<ul
+          class="career-facts"
+        >
+          {
+            content.facts.map((fact) => (
+              <li>
+                <>
+                  <strong>{fact.label}</strong>
+                  <span>{fact.value}</span>
+                </>
+              </li>
+            ))
+          }
+        </ul><a class="button" href={site.linkedinUrl} target="_blank" rel="noopener noreferrer"
+          >{content.profile}<span aria-hidden="true">↗</span><span class="sr-only"
+            >{locale === "es" ? "(abre en una nueva pestaña)" : "(opens in a new tab)"}</span
+          ></a
+        >
+      </div>
+    </div>
+  </section>
+  <ContactBand locale={locale} />
+</BaseLayout>

@@ -1,0 +1,84 @@
+---
+import { alternatePath, route, site, type Locale } from "@/content/site";
+
+interface Props {
+  locale: Locale;
+  pageKey: keyof (typeof site.routes)["es"];
+}
+
+const { locale, pageKey } = Astro.props;
+const alternateLocale = locale === "es" ? "en" : "es";
+const contactLabel = locale === "es" ? "Hablemos" : "Let’s talk";
+const menuLabel = locale === "es" ? "Menú" : "Menu";
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a
+      class="brand"
+      href={route(locale, "home")}
+      aria-label={`${site.brand} — ${locale === "es" ? "Inicio" : "Home"}`}
+    >
+      <svg class="brand-mark" viewBox="0 0 38 38" aria-hidden="true">
+        <path d="M6 7.5h10.5c8 0 14.5 4.7 14.5 11.5s-6.5 11.5-14.5 11.5H6z"></path>
+        <path d="M15.5 13h10.2M15.5 19h15.2M15.5 25h10.2"></path>
+      </svg>
+      <span>Data Guasu</span>
+    </a>
+
+    <nav
+      class="desktop-nav"
+      aria-label={locale === "es" ? "Navegación principal" : "Primary navigation"}
+    >
+      {
+        site.navigation[locale].map((item) => (
+          <a
+            href={route(locale, item.key)}
+            aria-current={pageKey === item.key ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="header-actions">
+      <a
+        class="language-link"
+        href={alternatePath(locale, pageKey)}
+        lang={alternateLocale}
+        hreflang={alternateLocale}
+      >
+        {alternateLocale.toUpperCase()}
+        <span class="sr-only">{locale === "es" ? "Cambiar a inglés" : "Switch to Spanish"}</span>
+      </a>
+      <a class="button button-small" href={route(locale, "contact")}>{contactLabel}</a>
+    </div>
+
+    <details class="mobile-menu">
+      <summary>{menuLabel}</summary>
+      <div class="mobile-menu-panel">
+        <nav aria-label={menuLabel}>
+          {
+            site.navigation[locale].map((item) => (
+              <a
+                href={route(locale, item.key)}
+                aria-current={pageKey === item.key ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+          <a href={route(locale, "contact")}>{contactLabel}</a>
+          <a
+            href={alternatePath(locale, pageKey)}
+            lang={alternateLocale}
+            hreflang={alternateLocale}
+          >
+            {locale === "es" ? "English" : "Español"}
+          </a>
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>

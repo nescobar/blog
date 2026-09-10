@@ -1,0 +1,17 @@
+{
+  "name": "Data Guasu",
+  "short_name": "Data Guasu",
+  "description": "Marketing Measurement & Decision Science",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f1e9",
+  "theme_color": "#081624",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

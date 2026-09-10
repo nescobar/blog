@@ -1,0 +1,39 @@
+---
+import { route, type Locale } from "@/content/site";
+
+interface Props {
+  locale: Locale;
+  compact?: boolean;
+}
+
+const { locale, compact = false } = Astro.props;
+const copy =
+  locale === "es"
+    ? {
+        eyebrow: "Una conversación concreta",
+        title: "Empecemos por la decisión que hoy genera más incertidumbre.",
+        text: "En una primera conversación podemos ordenar el problema, revisar qué evidencia existe y definir si hay un próximo paso útil.",
+        cta: "Hablemos de tu desafío",
+      }
+    : {
+        eyebrow: "A focused first conversation",
+        title: "Start with the decision creating the most uncertainty.",
+        text: "In an introductory conversation, we can frame the problem, review the available evidence, and decide whether there is a useful next step.",
+        cta: "Discuss your challenge",
+      };
+---
+
+<section class:list={["contact-band", { compact }]}>
+  <div class="shell contact-band-grid">
+    <div>
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h2>{copy.title}</h2>
+    </div>
+    <div>
+      <p>{copy.text}</p>
+      <a class="button button-light" href={route(locale, "contact")}
+        >{copy.cta}<span aria-hidden="true">↗</span></a
+      >
+    </div>
+  </div>
+</section>

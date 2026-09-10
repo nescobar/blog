@@ -1,0 +1,35 @@
+---
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import "@/styles/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Página no encontrada — Data Guasu</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Ir al contenido</a>
+    <Header locale="es" pageKey="home" />
+    <main id="main-content" class="error-page">
+      <div class="shell">
+        <h1>404</h1>
+        <h2>Esta señal no lleva a una página.</h2>
+        <p>La dirección puede haber cambiado. Volvé al inicio o continuá en inglés.</p>
+        <div class="error-actions">
+          <a class="button button-light" href="/">Ir al inicio</a><a
+            class="button button-ghost"
+            href="/en/"
+            lang="en">Continue in English</a
+          >
+        </div>
+      </div>
+    </main>
+    <Footer locale="es" />
+  </body>
+</html>

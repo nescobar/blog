@@ -1,0 +1,13 @@
+---
+import LegacyRedirect from "@/components/LegacyRedirect.astro";
+
+export function getStaticPaths() {
+  const insightSlugs = ["categories", "search"];
+
+  return insightSlugs.map((legacy) => ({ params: { legacy }, props: { target: "/archivo/" } }));
+}
+
+const { target } = Astro.props;
+---
+
+<LegacyRedirect target={target} />

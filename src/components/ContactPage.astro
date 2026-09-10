@@ -1,0 +1,164 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import { pageMeta, site, type Locale } from "@/content/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const content =
+  locale === "es"
+    ? {
+        eyebrow: "Contacto",
+        title: "Empecemos por el desafío que necesitás resolver.",
+        lead: "Una primera conversación sirve para entender la decisión, revisar qué evidencia existe y evaluar si Data Guasu es el apoyo adecuado.",
+        options: [
+          {
+            title: "Escribir por LinkedIn",
+            body: "El canal disponible para iniciar una conversación directa con Nicolás.",
+            action: "Abrir perfil de LinkedIn",
+            href: site.linkedinUrl,
+            featured: true,
+            external: true,
+          },
+          ...(site.bookingUrl
+            ? [
+                {
+                  title: "Agendar una conversación",
+                  body: "Elegí un horario disponible para una introducción breve.",
+                  action: "Ver disponibilidad",
+                  href: site.bookingUrl,
+                  featured: false,
+                  external: true,
+                },
+              ]
+            : []),
+          ...(site.professionalEmail
+            ? [
+                {
+                  title: "Enviar un correo",
+                  body: "Compartí el contexto básico y la decisión que querés mejorar.",
+                  action: site.professionalEmail,
+                  href: `mailto:${site.professionalEmail}`,
+                  featured: false,
+                  external: false,
+                },
+              ]
+            : []),
+          {
+            title: "Base y alcance",
+            body: "Trabajo remoto desde Paraguay con equipos de América Latina, Europa y otros mercados internacionales.",
+            action: "Paraguay · internacional",
+            href: "",
+            featured: false,
+            external: false,
+          },
+        ],
+        expectTitle: "Qué ayuda a tener una primera conversación productiva",
+        expectations: [
+          "La decisión de marketing o presupuesto que está en juego.",
+          "Qué fuentes, reportes o experimentos usa hoy el equipo.",
+          "Qué cambiaría si la incertidumbre pudiera reducirse.",
+        ],
+      }
+    : {
+        eyebrow: "Contact",
+        title: "Start with the challenge you need to solve.",
+        lead: "An initial conversation helps us understand the decision, review the available evidence, and assess whether Data Guasu is the right support.",
+        options: [
+          {
+            title: "Connect on LinkedIn",
+            body: "The available channel for starting a direct conversation with Nicolás.",
+            action: "Open LinkedIn profile",
+            href: site.linkedinUrl,
+            featured: true,
+            external: true,
+          },
+          ...(site.bookingUrl
+            ? [
+                {
+                  title: "Schedule a conversation",
+                  body: "Choose an available time for a short introduction.",
+                  action: "View availability",
+                  href: site.bookingUrl,
+                  featured: false,
+                  external: true,
+                },
+              ]
+            : []),
+          ...(site.professionalEmail
+            ? [
+                {
+                  title: "Send an email",
+                  body: "Share the basic context and the decision you want to improve.",
+                  action: site.professionalEmail,
+                  href: `mailto:${site.professionalEmail}`,
+                  featured: false,
+                  external: false,
+                },
+              ]
+            : []),
+          {
+            title: "Base and reach",
+            body: "Working remotely from Paraguay with teams across Latin America, Europe, and other international markets.",
+            action: "Paraguay · international",
+            href: "",
+            featured: false,
+            external: false,
+          },
+        ],
+        expectTitle: "What makes an initial conversation productive",
+        expectations: [
+          "The marketing or budget decision at stake.",
+          "The sources, reports, or experiments the team uses today.",
+          "What would change if the uncertainty could be reduced.",
+        ],
+      };
+---
+
+<BaseLayout locale={locale} pageKey="contact" {...pageMeta[locale].contact}>
+  <PageIntro eyebrow={content.eyebrow} title={content.title} lead={content.lead} />
+  <section class="section">
+    <div class="shell">
+      <div class="contact-options">
+        {
+          content.options.map((option, index) => (
+            <article class:list={["contact-option", { featured: option.featured }]}>
+              <span class="number">0{index + 1}</span>
+              <h2>{option.title}</h2>
+              <p>{option.body}</p>
+              {option.href && (
+                <a
+                  class="text-link"
+                  href={option.href}
+                  target={option.external ? "_blank" : undefined}
+                  rel={option.external ? "noopener noreferrer" : undefined}
+                >
+                  {option.action}
+                  <span class="sr-only">
+                    {option.external
+                      ? locale === "es"
+                        ? " (abre en una nueva pestaña)"
+                        : " (opens in a new tab)"
+                      : ""}
+                  </span>
+                </a>
+              )}
+              {!option.href && <strong>{option.action}</strong>}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section-tight">
+    <div class="shell">
+      <div class="section-heading"><div><h2>{content.expectTitle}</h2></div></div><ol
+        class="expectation-list"
+      >
+        {content.expectations.map((item) => <li>{item}</li>)}
+      </ol>
+    </div>
+  </section>
+</BaseLayout>

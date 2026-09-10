@@ -1,0 +1,164 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import ContactBand from "@/components/ContactBand.astro";
+import { pageMeta, type Locale } from "@/content/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const content =
+  locale === "es"
+    ? {
+        eyebrow: "Experiencia seleccionada",
+        title: "Trabajo representativo en decisiones de adquisición y crecimiento.",
+        lead: "Ejemplos de cómo la práctica transforma señales incompletas y restricciones reales en decisiones de adquisición y crecimiento más claras.",
+        work: [
+          {
+            title: "Forecast de ROAS de largo plazo desde señales tempranas",
+            body: "Proyección del valor futuro de cohortes con poca madurez, incorporando sesgo, regularización e intervalos de incertidumbre para apoyar decisiones de inversión tempranas.",
+            tags: ["LTV", "ROAS", "Cohortes"],
+          },
+          {
+            title: "Optimización automática de presupuesto y objetivos de ROAS",
+            body: "Sistema online que ajusta presupuestos y objetivos de ROAS a nivel campaña según retornos esperados, saturación, mínimos operativos, límites de escala y restricciones comerciales. Puede operar de forma continua sin intervención humana.",
+            tags: ["Optimización online", "Automatización", "ROAS"],
+          },
+          {
+            title: "Controles de sesgo y regularización de forecasts",
+            body: "Diseño de controles para evitar que señales volátiles o cohortes pequeñas generen recomendaciones extremas, con monitoreo del error a lo largo del tiempo.",
+            tags: ["Forecasting", "Riesgo", "Monitoreo"],
+          },
+          {
+            title: "Medición bajo restricciones de privacidad móvil",
+            body: "Combinación de señales agregadas, SKAdNetwork, cohortes y experimentación para sostener decisiones de adquisición cuando la atribución individual deja de ser confiable.",
+            tags: ["SKAdNetwork", "Privacidad", "Incrementalidad"],
+          },
+          {
+            title: "Recomendaciones y reporting automatizados",
+            body: "Pipelines que transforman datos de performance en reportes, alertas y recomendaciones revisables, reduciendo tareas repetitivas y manteniendo visibles los supuestos.",
+            tags: ["Automatización", "Pipelines", "Decision support"],
+          },
+          {
+            title: "Detección de anomalías de marketing y forecast",
+            body: "Monitoreo de cambios inesperados en gasto, ingresos, tracking y error predictivo para distinguir oportunidades reales de problemas de datos o ejecución.",
+            tags: ["Anomalías", "Calidad de datos", "Operación"],
+          },
+        ],
+        principlesEyebrow: "Forma de trabajo",
+        principlesTitle: "Lo que se mantiene constante.",
+        principles: [
+          {
+            title: "Decisión primero",
+            body: "La pregunta comercial define la granularidad, el horizonte y la precisión que realmente hacen falta.",
+          },
+          {
+            title: "Incertidumbre visible",
+            body: "Los supuestos y rangos se presentan junto con la recomendación para evitar una falsa sensación de certeza.",
+          },
+          {
+            title: "Transferencia real",
+            body: "El resultado debe poder ser entendido, cuestionado y mantenido por los equipos que lo van a usar.",
+          },
+        ],
+      }
+    : {
+        eyebrow: "Selected experience",
+        title: "Representative work on acquisition and growth decisions.",
+        lead: "Examples of how the practice turns incomplete signals and real-world constraints into clearer acquisition and growth decisions.",
+        work: [
+          {
+            title: "Long-term ROAS forecasting from early signals",
+            body: "Projecting future cohort value with limited maturity, accounting for bias, regularization, and uncertainty intervals to support early investment decisions.",
+            tags: ["LTV", "ROAS", "Cohorts"],
+          },
+          {
+            title: "Automated budget and ROAS target optimization",
+            body: "An online system that adjusts campaign-level budgets and ROAS targets using expected returns, saturation, operating minimums, scale limits, and commercial constraints. It can run continuously without human intervention.",
+            tags: ["Online optimization", "Automation", "ROAS"],
+          },
+          {
+            title: "Forecast bias controls and regularization",
+            body: "Designing controls that prevent volatile signals or small cohorts from producing extreme recommendations, with error monitoring over time.",
+            tags: ["Forecasting", "Risk", "Monitoring"],
+          },
+          {
+            title: "Measurement under mobile privacy constraints",
+            body: "Combining aggregated signals, SKAdNetwork, cohorts, and experimentation to sustain acquisition decisions when individual attribution becomes unreliable.",
+            tags: ["SKAdNetwork", "Privacy", "Incrementality"],
+          },
+          {
+            title: "Automated recommendations and reporting",
+            body: "Pipelines that turn performance data into reviewable reports, alerts, and recommendations, reducing repetitive work while keeping assumptions visible.",
+            tags: ["Automation", "Pipelines", "Decision support"],
+          },
+          {
+            title: "Marketing and forecast anomaly detection",
+            body: "Monitoring unexpected shifts in spend, revenue, tracking, and predictive error to separate real opportunities from data or execution issues.",
+            tags: ["Anomalies", "Data quality", "Operations"],
+          },
+        ],
+        principlesEyebrow: "Working principles",
+        principlesTitle: "What stays consistent.",
+        principles: [
+          {
+            title: "Decision first",
+            body: "The commercial question determines the granularity, horizon, and accuracy that actually matter.",
+          },
+          {
+            title: "Visible uncertainty",
+            body: "Assumptions and ranges sit beside the recommendation, avoiding a false sense of precision.",
+          },
+          {
+            title: "Real transfer",
+            body: "The result should be understood, challenged, and maintained by the teams that will use it.",
+          },
+        ],
+      };
+---
+
+<BaseLayout locale={locale} pageKey="experience" {...pageMeta[locale].experience}>
+  <PageIntro eyebrow={content.eyebrow} title={content.title} lead={content.lead} />
+  <section class="section">
+    <div class="shell work-grid">
+      {
+        content.work.map((item, index) => (
+          <article class="work-card">
+            <>
+              <span class="number">0{index + 1}</span>
+              <h2>{item.title}</h2>
+              <p>{item.body}</p>
+              <div class="tags">
+                {item.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section class="section-tight">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">{content.principlesEyebrow}</p><h2>{content.principlesTitle}</h2>
+        </div>
+      </div><div class="principles-grid">
+        {
+          content.principles.map((item) => (
+            <article class="principle">
+              <>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <ContactBand locale={locale} />
+</BaseLayout>

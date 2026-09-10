@@ -1,0 +1,46 @@
+---
+import { route, site, type Locale } from "@/content/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <a class="brand footer-brand" href={route(locale, "home")}>
+        <svg class="brand-mark" viewBox="0 0 38 38" aria-hidden="true">
+          <path d="M6 7.5h10.5c8 0 14.5 4.7 14.5 11.5s-6.5 11.5-14.5 11.5H6z"></path>
+          <path d="M15.5 13h10.2M15.5 19h15.2M15.5 25h10.2"></path>
+        </svg>
+        <span>{site.brand}</span>
+      </a>
+      <p>{site.descriptor}</p>
+    </div>
+    <div class="footer-links">
+      <a href={route(locale, "services")}>{locale === "es" ? "Servicios" : "Services"}</a>
+      <a href={route(locale, "experience")}>{locale === "es" ? "Experiencia" : "Experience"}</a>
+      <a href={route(locale, "about")}>{locale === "es" ? "Nosotros" : "About"}</a>
+      <a href={route(locale, "insights")}>{locale === "es" ? "Ideas" : "Insights"}</a>
+      <a href={route(locale, "archive")}>{locale === "es" ? "Archivo" : "Archive"}</a>
+    </div>
+    <div class="footer-links">
+      <a href={route(locale, "contact")}>{locale === "es" ? "Contacto" : "Contact"}</a>
+      <a href={site.linkedinUrl} target="_blank" rel="noopener noreferrer">
+        LinkedIn <span aria-hidden="true">↗</span>
+        <span class="sr-only"
+          >{locale === "es" ? "(abre en una nueva pestaña)" : "(opens in a new tab)"}</span
+        >
+      </a>
+      <a href={route(locale, "privacy")}>{locale === "es" ? "Privacidad" : "Privacy"}</a>
+    </div>
+  </div>
+  <div class="shell footer-meta">
+    <span>© {year} {site.brand}</span>
+    <span>{site.location[locale]}</span>
+  </div>
+</footer>
