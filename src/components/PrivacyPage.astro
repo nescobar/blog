@@ -1,0 +1,92 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import { pageMeta, site, type Locale } from "@/content/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const content =
+  locale === "es"
+    ? {
+        eyebrow: "Privacidad",
+        title: "Privacidad, sin letra chica innecesaria.",
+        lead: "Esta política describe el funcionamiento del sitio público de Data Guasu.",
+        sections: [
+          {
+            title: "Datos que recopila este sitio",
+            body: "Este sitio informativo no incluye formularios, cuentas de usuario ni herramientas propias de seguimiento. Data Guasu no recopila datos personales directamente a través de estas páginas.",
+          },
+          {
+            title: "Enlaces externos",
+            body: "El sitio enlaza a LinkedIn y puede incorporar en el futuro un correo profesional o una herramienta de agenda. Al seguir un enlace externo, se aplican las políticas de privacidad de ese proveedor.",
+          },
+          {
+            title: "Hosting y registros técnicos",
+            body: "El proveedor de hosting puede procesar información técnica básica —como dirección IP, tipo de navegador y registros de seguridad— para entregar y proteger el sitio. Ese tratamiento depende de la infraestructura de GitHub Pages.",
+          },
+          {
+            title: "Cambios",
+            body: "Si se incorporan analytics, formularios u otras herramientas que procesen datos, esta política se actualizará antes de publicarlas.",
+          },
+          {
+            title: "Contacto",
+            body: "Las consultas sobre privacidad pueden dirigirse a Nicolás Escobar mediante el perfil profesional enlazado en este sitio.",
+          },
+        ],
+        updated: "Última actualización: septiembre de 2026.",
+      }
+    : {
+        eyebrow: "Privacy",
+        title: "Privacy, without unnecessary fine print.",
+        lead: "This policy describes how the public Data Guasu website currently operates.",
+        sections: [
+          {
+            title: "Data this site collects",
+            body: "This informational site has no forms, user accounts, or first-party tracking tools. Data Guasu does not collect personal information directly through these pages.",
+          },
+          {
+            title: "External links",
+            body: "The site links to LinkedIn and may later include a professional email address or scheduling provider. When you follow an external link, that provider’s privacy policy applies.",
+          },
+          {
+            title: "Hosting and technical logs",
+            body: "The hosting provider may process basic technical information—such as IP address, browser type, and security logs—to deliver and protect the site. That processing depends on GitHub Pages infrastructure.",
+          },
+          {
+            title: "Changes",
+            body: "If analytics, forms, or other data-processing tools are added, this policy will be updated before they are published.",
+          },
+          {
+            title: "Contact",
+            body: "Questions about privacy can be directed to Nicolás Escobar through the professional profile linked on this site.",
+          },
+        ],
+        updated: "Last updated: September 2026.",
+      };
+---
+
+<BaseLayout locale={locale} pageKey="privacy" {...pageMeta[locale].privacy}>
+  <PageIntro eyebrow={content.eyebrow} title={content.title} lead={content.lead} />
+  <section class="section">
+    <article class="prose">
+      {
+        content.sections.map((section) => (
+          <>
+            <>
+              <h2>{section.title}</h2>
+              <p>{section.body}</p>
+            </>
+          </>
+        ))
+      }<p><strong>{content.updated}</strong></p><p>
+        <a href={site.linkedinUrl} target="_blank" rel="noopener noreferrer"
+          >LinkedIn — {site.founder}<span class="sr-only"
+            >{locale === "es" ? " (abre en una nueva pestaña)" : " (opens in a new tab)"}</span
+          ></a
+        >
+      </p>
+    </article>
+  </section>
+</BaseLayout>

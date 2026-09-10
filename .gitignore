@@ -11,3 +11,10 @@ _notebooks/.ipynb_checkpoints
 .netlify
 .tweet-cache
 __pycache__
+node_modules/
+dist/
+.astro/
+.DS_Store
+.env
+.env.*
+!.env.example

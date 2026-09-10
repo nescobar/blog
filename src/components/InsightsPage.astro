@@ -1,0 +1,94 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import ContactBand from "@/components/ContactBand.astro";
+import { pageMeta, route, type Locale } from "@/content/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const content =
+  locale === "es"
+    ? {
+        eyebrow: "Ideas",
+        title: "Notas para tomar mejores decisiones de marketing.",
+        lead: "Perspectivas breves sobre los supuestos, límites y elecciones que hacen útil a un sistema de medición.",
+        label: "Perspectiva",
+        archiveTitle: "También está el archivo original.",
+        archiveBody:
+          "Las publicaciones anteriores sobre ingeniería de datos, visualización, tenis y datos cívicos siguen disponibles, separadas del enfoque actual.",
+        archiveLink: "Explorar el archivo",
+        insights: [
+          {
+            title: "El ROAS de plataforma no responde una pregunta incremental",
+            body: "La atribución observa conversiones asociadas a una interacción; la incrementalidad intenta estimar qué habría ocurrido sin la inversión. Confundir ambas lecturas puede sobrevalorar canales que capturan demanda existente. La salida práctica no es descartar la atribución, sino combinarla con tests, modelos agregados y una definición clara de la decisión.",
+          },
+          {
+            title: "Un forecast útil muestra el rango, no solo el número",
+            body: "Cuando una cohorte todavía es joven, dos curvas plausibles pueden llevar a decisiones de presupuesto muy distintas. Reportar un único ROAS esperado esconde ese riesgo. Rangos, escenarios y reglas de decisión permiten actuar antes sin fingir que la incertidumbre desapareció.",
+          },
+          {
+            title: "Antes de un MMM, conviene auditar la pregunta",
+            body: "Un marketing mix model no corrige definiciones inconsistentes, cambios sin registrar o una granularidad incompatible con la decisión. Un diagnóstico previo ayuda a determinar si el modelo será accionable, qué datos faltan y qué otras formas de evidencia pueden resolver primero el problema.",
+          },
+        ],
+      }
+    : {
+        eyebrow: "Insights",
+        title: "Notes for better marketing decisions.",
+        lead: "Short perspectives on the assumptions, limits, and choices that make a measurement system useful.",
+        label: "Perspective",
+        archiveTitle: "The original archive is still here.",
+        archiveBody:
+          "Earlier posts on data engineering, visualization, tennis, and civic data remain available, separate from the current focus.",
+        archiveLink: "Explore the archive",
+        insights: [
+          {
+            title: "Platform ROAS does not answer an incremental question",
+            body: "Attribution observes conversions associated with an interaction; incrementality estimates what would have happened without the spend. Treating them as the same can overvalue channels that capture existing demand. The practical answer is not to discard attribution, but to combine it with tests, aggregated models, and a clear decision definition.",
+          },
+          {
+            title: "A useful forecast shows the range—not only the number",
+            body: "When a cohort is still young, two plausible curves can lead to very different budget choices. A single expected ROAS hides that risk. Ranges, scenarios, and decision rules let teams act earlier without pretending uncertainty has disappeared.",
+          },
+          {
+            title: "Before an MMM, audit the question",
+            body: "A marketing mix model cannot repair inconsistent definitions, unrecorded changes, or granularity that does not match the decision. A prior diagnostic establishes whether the model will be actionable, which data is missing, and whether another form of evidence could answer the problem sooner.",
+          },
+        ],
+      };
+---
+
+<BaseLayout locale={locale} pageKey="insights" {...pageMeta[locale].insights}>
+  <PageIntro eyebrow={content.eyebrow} title={content.title} lead={content.lead} />
+  <section class="section">
+    <div class="shell insights-list">
+      {
+        content.insights.map((item, index) => (
+          <article class="insight-row" id={`perspective-0${index + 1}`}>
+            <>
+              <span class="meta">
+                {content.label} 0{index + 1}
+              </span>
+              <h2>{item.title}</h2>
+              <p>{item.body}</p>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section class="archive-callout">
+    <div class="shell archive-callout-grid">
+      <h2>{content.archiveTitle}</h2>
+      <div>
+        <p>{content.archiveBody}</p>
+        <a class="text-link" href={route(locale, "archive")}>
+          {content.archiveLink}
+        </a>
+      </div>
+    </div>
+  </section>
+  <ContactBand locale={locale} compact />
+</BaseLayout>

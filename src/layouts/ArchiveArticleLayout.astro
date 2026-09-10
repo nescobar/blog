@@ -1,0 +1,73 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { archiveDate, archiveUrl, type ArchivePost } from "@/content/archive";
+import { route } from "@/content/site";
+
+interface Props {
+  frontmatter: ArchivePost;
+}
+
+const { frontmatter: post } = Astro.props;
+const locale = post.language;
+const copy =
+  locale === "es"
+    ? {
+        eyebrow: "Archivo de Data Guasu",
+        back: "Volver al archivo",
+        note: "Publicada originalmente en",
+        notice:
+          "Esta publicación se conserva en su idioma original. Algunas herramientas, enlaces o detalles técnicos pueden haber cambiado desde su publicación.",
+        language: "Español",
+      }
+    : {
+        eyebrow: "Data Guasu archive",
+        back: "Back to the archive",
+        note: "Originally published",
+        notice:
+          "This post is preserved in its original language. Some tools, links, or technical details may have changed since publication.",
+        language: "English",
+      };
+---
+
+<BaseLayout
+  locale={locale}
+  pageKey="archive"
+  title={`${post.title} — Data Guasu`}
+  description={post.description[locale]}
+  canonicalPath={archiveUrl(post)}
+  alternatePathOverride={null}
+  contentType="article"
+  publishedTime={post.publishedDate}
+>
+  <article class="archive-article">
+    <header class="archive-article-header section-dark">
+      <div class="shell archive-article-heading">
+        <a class="archive-back" href={route(locale, "archive")}>
+          <span aria-hidden="true">←</span>
+          {copy.back}
+        </a>
+        <p class="eyebrow">{copy.eyebrow}</p>
+        <h1>{post.title}</h1>
+        <div class="archive-article-meta">
+          <span>{post.topic[locale]}</span>
+          <span>{copy.language}</span>
+          <span>
+            {copy.note}
+            <time datetime={post.publishedDate}>{archiveDate(post, locale)}</time>
+          </span>
+        </div>
+      </div>
+    </header>
+    <div class="shell archive-article-body">
+      <aside
+        class="archive-notice"
+        aria-label={locale === "es" ? "Nota del archivo" : "Archive note"}
+      >
+        {copy.notice}
+      </aside>
+      <div class="archive-prose">
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

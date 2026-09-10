@@ -1,0 +1,4 @@
+export function legacyRedirectHtml(target = "/insights/") {
+  const absolute = new URL(target, "https://www.dataguasu.com").href;
+  return `<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="robots" content="noindex, follow"><meta http-equiv="refresh" content="0;url=${target}"><link rel="canonical" href="${absolute}"><title>Contenido trasladado — Data Guasu</title></head><body><main><p>Este contenido fue trasladado. <a href="${target}">Continuar a Data Guasu</a>.</p><p lang="en">This content has moved. <a href="${target}">Continue to Data Guasu</a>.</p></main></body></html>`;
+}

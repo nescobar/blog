@@ -1,0 +1,151 @@
+---
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { alternatePath, route, site, type Locale } from "@/content/site";
+import "@/styles/global.css";
+
+interface Props {
+  locale: Locale;
+  pageKey: keyof (typeof site.routes)["es"];
+  title: string;
+  description: string;
+  noindex?: boolean;
+  canonicalPath?: string;
+  alternatePathOverride?: string | null;
+  contentType?: "website" | "article";
+  publishedTime?: string;
+}
+
+const {
+  locale,
+  pageKey,
+  title,
+  description,
+  noindex = false,
+  canonicalPath: customCanonicalPath,
+  alternatePathOverride,
+  contentType = "website",
+  publishedTime,
+} = Astro.props;
+const canonicalPath = customCanonicalPath ?? route(locale, pageKey);
+const canonical = new URL(canonicalPath, site.origin);
+const alternateLocale = locale === "es" ? "en" : "es";
+const alternatePathValue =
+  alternatePathOverride === null ? null : (alternatePathOverride ?? alternatePath(locale, pageKey));
+const alternate = alternatePathValue ? new URL(alternatePathValue, site.origin) : null;
+const socialImage = new URL(site.socialImage, site.origin);
+const graph: Record<string, unknown>[] = [
+  {
+    "@type": "ProfessionalService",
+    "@id": `${site.origin}/#organization`,
+    name: site.brand,
+    url: site.origin,
+    description: site.descriptor,
+    founder: { "@id": `${site.origin}/#founder` },
+    areaServed: ["Paraguay", "Latin America", "Europe", "International"],
+    serviceType: [
+      "Marketing measurement",
+      "Forecasting and budget optimization",
+      "Fractional marketing analytics leadership",
+    ],
+    sameAs: [site.linkedinUrl],
+  },
+  {
+    "@type": "Person",
+    "@id": `${site.origin}/#founder`,
+    name: site.founder,
+    url: new URL(route(locale, "about"), site.origin).href,
+    sameAs: [site.linkedinUrl],
+    jobTitle: "Senior Data Scientist",
+    homeLocation: { "@type": "Country", name: "Paraguay" },
+    knowsAbout: [
+      "Marketing measurement",
+      "Marketing analytics",
+      "Lifetime value forecasting",
+      "Incrementality",
+      "Budget optimization",
+    ],
+  },
+];
+
+if (contentType === "article") {
+  graph.push({
+    "@type": "BlogPosting",
+    headline: title,
+    description,
+    datePublished: publishedTime,
+    inLanguage: locale,
+    author: { "@id": `${site.origin}/#founder` },
+    publisher: { "@id": `${site.origin}/#organization` },
+    mainEntityOfPage: canonical.href,
+  });
+}
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": graph,
+};
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#081624" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={locale} href={canonical} />
+    {alternate && <link rel="alternate" hreflang={alternateLocale} href={alternate} />}
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={alternate ? new URL(route("es", pageKey), site.origin) : canonical}
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Data Guasu — Archive"
+      href="/feed.xml"
+    />
+    <meta property="og:type" content={contentType} />
+    <meta property="og:site_name" content={site.brand} />
+    <meta property="og:locale" content={locale === "es" ? "es_PY" : "en_US"} />
+    {
+      alternate && (
+        <meta property="og:locale:alternate" content={locale === "es" ? "en_US" : "es_PY"} />
+      )
+    }
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Data Guasu — Marketing Measurement & Decision Science" />
+    {
+      contentType === "article" && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )
+    }
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content"
+      >{locale === "es" ? "Ir al contenido" : "Skip to content"}</a
+    >
+    <Header locale={locale} pageKey={pageKey} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

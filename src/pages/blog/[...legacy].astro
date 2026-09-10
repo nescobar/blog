@@ -1,0 +1,44 @@
+---
+import LegacyRedirect from "@/components/LegacyRedirect.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { legacy: undefined }, props: { target: "/" } },
+    { params: { legacy: "about" }, props: { target: "/nosotros/" } },
+    { params: { legacy: "search" }, props: { target: "/archivo/" } },
+    { params: { legacy: "categories" }, props: { target: "/archivo/" } },
+    {
+      params: { legacy: "visualize-databricks-dashboard-tableau" },
+      props: { target: "/visualize-databricks-dashboard-tableau/" },
+    },
+    {
+      params: { legacy: "Building-a-notebook-based-ETL-framework-with-Spark-and-Delta-Lake" },
+      props: { target: "/Building-a-notebook-based-ETL-framework-with-Spark-and-Delta-Lake/" },
+    },
+    {
+      params: {
+        legacy: "Utilizando-Twitter-para-Monitorear-los-Reclamos-de-la-Ciudadanía-(2)",
+      },
+      props: {
+        target: "/Utilizando-Twitter-para-Monitorear-los-Reclamos-de-la-Ciudadanía-(2)/",
+      },
+    },
+    {
+      params: { legacy: "Analisis-Twitter-MuniAsu" },
+      props: { target: "/Analisis-Twitter-MuniAsu/" },
+    },
+    {
+      params: { legacy: "Tennis-Analytics" },
+      props: { target: "/Tennis-Analytics/" },
+    },
+    {
+      params: { legacy: "Data-Guasu" },
+      props: { target: "/Data-Guasu/" },
+    },
+  ];
+}
+
+const { target } = Astro.props;
+---
+
+<LegacyRedirect target={target} />

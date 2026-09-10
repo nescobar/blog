@@ -1,0 +1,173 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import ContactBand from "@/components/ContactBand.astro";
+import { pageMeta, site, type Locale } from "@/content/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const content =
+  locale === "es"
+    ? {
+        eyebrow: "Servicios",
+        title: "La intervención correcta para la decisión que tenés enfrente.",
+        lead: "Tres formatos de trabajo que pueden empezar con un diagnóstico, avanzar hacia una implementación o sostener una capacidad de medición en el tiempo.",
+        sideTitle: "Alcance claro",
+        sideBody:
+          "Cada engagement se ajusta a la pregunta, los datos disponibles y la forma en que tu equipo toma decisiones.",
+        capabilitiesEyebrow: "Capacidades que atraviesan el trabajo",
+        capabilitiesTitle: "Métodos al servicio de la decisión, no al revés.",
+        capabilities: [
+          {
+            title: "Marketing mix modeling",
+            description:
+              "Estima cuánto aporta cada canal a las ventas y cómo cambia su rendimiento con distintos niveles de inversión.",
+          },
+          {
+            title: "Atribución e incrementalidad",
+            description:
+              "Combina datos de MMPs como Adjust y AppsFlyer con experimentos y otras fuentes para distinguir conversiones atribuidas de resultados causados por el marketing.",
+          },
+          {
+            title: "Inferencia causal",
+            description:
+              "Construye una comparación creíble para estimar qué habría ocurrido sin una campaña, cambio o intervención.",
+          },
+          {
+            title: "Cohortes y unit economics",
+            description:
+              "Sigue adquisición, retención e ingresos por grupo para entender CAC, LTV y tiempo de recuperación.",
+          },
+          {
+            title: "SKAdNetwork y privacidad móvil",
+            description:
+              "Convierte señales agregadas y tardías de iOS en una lectura útil del rendimiento sin identificadores individuales.",
+          },
+          {
+            title: "Pipelines y automatización",
+            description:
+              "Experiencia integrando APIs de Google, Meta, AppLovin, TikTok y otros publishers para unificar, validar y actualizar datos de marketing.",
+          },
+          {
+            title: "Monitoreo de modelos",
+            description:
+              "Detecta degradación, cambios en los datos y supuestos vencidos antes de que afecten decisiones.",
+          },
+          {
+            title: "Herramientas de decisión",
+            description:
+              "Lleva los resultados a simuladores y tableros para comparar escenarios y convertir análisis en acciones.",
+          },
+        ],
+      }
+    : {
+        eyebrow: "Services",
+        title: "The right intervention for the decision in front of you.",
+        lead: "Three ways of working that can begin with a diagnosis, progress to implementation, or sustain a measurement capability over time.",
+        sideTitle: "Clear scope",
+        sideBody:
+          "Each engagement is shaped around the question, the available data, and how your team makes decisions.",
+        capabilitiesEyebrow: "Capabilities across every engagement",
+        capabilitiesTitle: "Methods in service of the decision—not the other way around.",
+        capabilities: [
+          {
+            title: "Marketing mix modeling",
+            description:
+              "Estimates each channel’s contribution to sales and how its returns change at different investment levels.",
+          },
+          {
+            title: "Attribution & incrementality",
+            description:
+              "Combines data from MMPs such as Adjust and AppsFlyer with experiments and other sources to separate attributed conversions from outcomes caused by marketing.",
+          },
+          {
+            title: "Causal inference",
+            description:
+              "Builds a credible comparison to estimate what would have happened without a campaign, change, or intervention.",
+          },
+          {
+            title: "Cohorts & unit economics",
+            description:
+              "Tracks acquisition, retention, and revenue by group to understand CAC, LTV, and payback time.",
+          },
+          {
+            title: "SKAdNetwork & mobile privacy",
+            description:
+              "Turns aggregated, delayed iOS signals into a useful view of performance without individual identifiers.",
+          },
+          {
+            title: "Pipelines & automation",
+            description:
+              "Experience integrating APIs from Google, Meta, AppLovin, TikTok, and other publishers to unify, validate, and refresh marketing data.",
+          },
+          {
+            title: "Model monitoring",
+            description:
+              "Detects performance degradation, data shifts, and outdated assumptions before they affect decisions.",
+          },
+          {
+            title: "Decision tools",
+            description:
+              "Turns results into simulators and dashboards that help teams compare scenarios and act.",
+          },
+        ],
+      };
+---
+
+<BaseLayout locale={locale} pageKey="services" {...pageMeta[locale].services}>
+  <PageIntro eyebrow={content.eyebrow} title={content.title} lead={content.lead} />
+  <section class="section">
+    <div class="shell content-grid">
+      <aside class="sticky-label">
+        <p class="eyebrow">{content.sideTitle}</p><p>{content.sideBody}</p>
+      </aside>
+      <div>
+        {
+          site.services[locale].map((service) => (
+            <article class="service-detail" id={service.id}>
+              <>
+                <span class="number">{service.number}</span>
+                <div>
+                  <>
+                    <h2>{service.title}</h2>
+                    <p>{service.summary}</p>
+                    <ul class="deliverables">
+                      {service.deliverables.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </>
+                </div>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">{content.capabilitiesEyebrow}</p><h2>{content.capabilitiesTitle}</h2>
+        </div>
+      </div>
+      <div class="capability-grid">
+        {
+          content.capabilities.map((item, index) => (
+            <div>
+              <>
+                <span>0{index + 1}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <ContactBand locale={locale} />
+</BaseLayout>
